@@ -4,7 +4,4 @@ numpy
 matplotlib
 seaborn
 scikit-learn
-tensorflow
-keras
-keras-tuner
 joblib

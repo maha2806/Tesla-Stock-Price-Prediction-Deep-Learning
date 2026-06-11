@@ -163,6 +163,97 @@ st.success(
     f"Predicted Next Tesla Closing Price: ${next_price[0][0]:.2f}"
 )
 
+```python
+# --------------------------------
+# MULTI-DAY FORECASTING
+# --------------------------------
+st.subheader("🔮 Future Forecasts")
+
+def forecast_future(model, scaled_data, scaler, time_step, days):
+    temp_input = scaled_data[-time_step:].flatten().tolist()
+    forecasts = []
+
+    for _ in range(days):
+        x_input = np.array(temp_input[-time_step:])
+        x_input = x_input.reshape(1, time_step, 1)
+
+        pred = model.predict(x_input, verbose=0)[0][0]
+
+        forecasts.append(pred)
+        temp_input.append(pred)
+
+    forecasts = np.array(forecasts).reshape(-1, 1)
+    forecasts = scaler.inverse_transform(forecasts)
+
+    return forecasts.flatten()
+
+# Generate forecasts
+forecast_1 = forecast_future(model, scaled_data, scaler, time_step, 1)
+forecast_5 = forecast_future(model, scaled_data, scaler, time_step, 5)
+forecast_10 = forecast_future(model, scaled_data, scaler, time_step, 10)
+
+# Metrics Cards
+c1, c2, c3 = st.columns(3)
+
+c1.metric(
+    "1-Day Forecast",
+    f"${forecast_1[-1]:.2f}"
+)
+
+c2.metric(
+    "5-Day Forecast",
+    f"${forecast_5[-1]:.2f}"
+)
+
+c3.metric(
+    "10-Day Forecast",
+    f"${forecast_10[-1]:.2f}"
+)
+
+# Forecast Chart
+st.subheader("📈 Future Price Forecast")
+
+fig4, ax4 = plt.subplots(figsize=(12, 5))
+
+ax4.plot(
+    range(len(data[-60:])),
+    data[-60:],
+    label="Historical Close Price"
+)
+
+future_x = range(
+    len(data[-60:]),
+    len(data[-60:]) + len(forecast_10)
+)
+
+ax4.plot(
+    future_x,
+    forecast_10,
+    marker="o",
+    label="10-Day Forecast"
+)
+
+ax4.set_title("Tesla Future Price Forecast")
+ax4.set_xlabel("Days")
+ax4.set_ylabel("Price ($)")
+ax4.legend()
+ax4.grid(True)
+
+st.pyplot(fig4)
+
+# Forecast Table
+forecast_df = pd.DataFrame({
+    "Day": np.arange(1, 11),
+    "Forecast Price": forecast_10
+})
+
+st.subheader("📋 Forecast Table")
+st.dataframe(forecast_df, use_container_width=True)
+```
+
+```
+```
+
 # --------------------------------
 # FOOTER
 # --------------------------------

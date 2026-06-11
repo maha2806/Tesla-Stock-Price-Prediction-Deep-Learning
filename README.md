@@ -144,15 +144,15 @@ Interactive Streamlit application deployed for real-time Tesla stock prediction.
 
 ## Model Comparison
 
-| Model | MAE | RMSE |
-|---------|---------|---------|
-| SimpleRNN | XX | XX |
-| LSTM | XX | XX |
-| Stacked LSTM | XX | XX |
+| Model       | MAE      | MSE      | RMSE     | Performance Insight                                          |
+| ----------- | -------- | -------- | -------- | ------------------------------------------------------------ |
+| **SimpleRNN** | 0.015351 | 0.000528 | 0.022989 | ⭐ Best performance (lowest error, most accurate predictions) |
+| **LSTM** | 0.017728 | 0.000653 | 0.025545 | Moderate performance, slight increase in error               |
+| **Stacked LSTM** | 0.020515 | 0.000951 | 0.030845 | Weakest performance, highest deviation                       |
 
-Final Selected Model:
+Final Selected Model: Simple RNN
 
-✅ Stacked LSTM
+✅ Simple RNN
 
 ---
 

@@ -163,7 +163,7 @@ st.success(
     f"Predicted Next Tesla Closing Price: ${next_price[0][0]:.2f}"
 )
 
-```python
+
 # --------------------------------
 # MULTI-DAY FORECASTING
 # --------------------------------

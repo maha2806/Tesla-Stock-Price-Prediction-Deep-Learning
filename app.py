@@ -1,4 +1,4 @@
-```python
+
 import streamlit as st
 import numpy as np
 import pandas as pd
@@ -170,4 +170,4 @@ st.markdown("---")
 st.markdown(
     "🚀 Built with Streamlit | TensorFlow | LSTM | Tesla Stock Analysis"
 )
-```
+

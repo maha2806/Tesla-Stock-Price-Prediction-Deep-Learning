@@ -140,6 +140,9 @@ Evaluation Metrics:
 
 Interactive Streamlit application deployed for real-time Tesla stock prediction.
 
+https://tesla-stock-price-prediction-deep-learning-jdtqjgxf3cwe59rtpyi.streamlit.app/
+
+
 ---
 
 ## Model Comparison
@@ -201,10 +204,6 @@ Features:
 ## Author
 
 Sita Bharatula
-
-Master of Computer Applications
-
-Chandigarh University
 
 ---
 

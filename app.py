@@ -249,7 +249,7 @@ forecast_df = pd.DataFrame({
 
 st.subheader("📋 Forecast Table")
 st.dataframe(forecast_df, use_container_width=True)
-```
+
 
 ```
 ```
